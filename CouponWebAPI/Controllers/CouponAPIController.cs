@@ -1,4 +1,5 @@
-﻿using CouponWebAPI.Data;
+﻿using AutoMapper;
+using CouponWebAPI.Data;
 using CouponWebAPI.Models;
 using CouponWebAPI.Models.Dto;
 using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@ namespace CouponWebAPI.Controllers
     {
         private readonly AppDbContext _db;
         private ResponseDto _responseDto;
+        private IMapper _mapper;
 
-        public CouponAPIController(AppDbContext db)
+        public CouponAPIController(AppDbContext db, IMapper mapper)
         {
             _db = db;
+            _mapper = mapper;
             _responseDto = new ResponseDto();
         }
 
@@ -24,7 +27,7 @@ namespace CouponWebAPI.Controllers
             try
             {
                 IEnumerable<Coupon> objList = _db.Coupons.ToList(); 
-                _responseDto.Result = objList;
+                _responseDto.Result = _mapper.Map<IEnumerable<CouponDto>>(objList);
 
             }
             catch (Exception ex)
@@ -43,7 +46,8 @@ namespace CouponWebAPI.Controllers
             try
             {
                 Coupon objList = _db.Coupons.First(u=>u.CouponId == id);
-                _responseDto.Result = objList;
+                
+                _responseDto.Result = _mapper.Map<CouponDto>(objList); ;
                 
 
             }
