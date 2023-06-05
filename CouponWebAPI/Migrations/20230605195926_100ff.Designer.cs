@@ -3,6 +3,7 @@ using CouponWebAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CouponWebAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230605195926_100ff")]
+    partial class _100ff
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,14 +50,14 @@ namespace CouponWebAPI.Migrations
                         new
                         {
                             CouponId = 1,
-                            CouponCode = "10OFF",
+                            CouponCode = "100FF",
                             DiscountAmount = 10,
                             MinAmount = 20
                         },
                         new
                         {
                             CouponId = 2,
-                            CouponCode = "20OFF",
+                            CouponCode = "200FF",
                             DiscountAmount = 20,
                             MinAmount = 40
                         });
