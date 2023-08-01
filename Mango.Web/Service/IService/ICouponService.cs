@@ -14,4 +14,3 @@ namespace Mango.Web.Service.IService
 
     }
 }
--
