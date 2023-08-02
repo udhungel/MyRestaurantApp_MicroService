@@ -49,7 +49,7 @@ namespace Mango.Web.Service
 
                 switch (apiResponse.StatusCode)
                 {
-                    case System.Net.HttpStatusCode.OK:
+                    case System.Net.HttpStatusCode.NotFound:
                         return new() { IsSuccess = false, Message = "Not Found" };
                     case System.Net.HttpStatusCode.Forbidden:
                         return new() { IsSuccess = false, Message = "Access Denied" };
